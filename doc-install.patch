@@ -1,0 +1,14 @@
+Upstream bug: https://github.com/nose-devs/nose/issues/483
+
+diff -ru nose-1.3.7/setup.py nose-1.3.7.new/setup.py
+--- nose-1.3.7/setup.py	2015-06-02 01:43:31.000000000 -0700
++++ nose-1.3.7.new/setup.py	2016-11-17 13:56:30.424906574 -0800
+@@ -106,7 +106,7 @@
+     license = 'GNU LGPL',
+     keywords = 'test unittest doctest automatic discovery',
+     url = 'http://readthedocs.org/docs/nose/',
+-    data_files = [('man/man1', ['nosetests.1'])],
++    data_files = [('share/man/man1', ['nosetests.1'])],
+     package_data = {'': ['*.txt',
+                          'examples/*.py',
+                          'examples/*/*.py']},

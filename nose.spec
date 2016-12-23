@@ -4,9 +4,9 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 22
-URL      : https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz
-Source0  : https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz
+Release  : 23
+URL      : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
+Source0  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Summary  : nose extends unittest to make testing easier
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -75,7 +75,7 @@ python3 -tt setup.py build -b py3 install --root=%{buildroot}
 %defattr(-,root,root,-)
 /usr/bin/nosetests
 /usr/bin/nosetests-2.7
-/usr/bin/nosetests-3.5
+/usr/bin/nosetests-3.6
 
 %files doc
 %defattr(-,root,root,-)

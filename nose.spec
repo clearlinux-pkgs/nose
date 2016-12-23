@@ -4,7 +4,7 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 21
+Release  : 22
 URL      : https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz
 Source0  : https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz
 Summary  : nose extends unittest to make testing easier

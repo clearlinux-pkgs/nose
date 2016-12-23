@@ -4,7 +4,7 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 23
+Release  : 24
 URL      : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source0  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Summary  : nose extends unittest to make testing easier

@@ -6,7 +6,7 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 27
+Release  : 28
 URL      : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source0  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source99 : http://pypi.debian.net/nose/nose-1.3.7.tar.gz.asc
@@ -14,6 +14,7 @@ Summary  : nose extends unittest to make testing easier
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: nose-bin
+Requires: nose-legacypython
 Requires: nose-python
 Requires: nose-doc
 BuildRequires : pbr
@@ -24,9 +25,18 @@ BuildRequires : setuptools
 Patch1: doc-install.patch
 
 %description
-Basic usage
-***********
-Use the nosetests script (after installation by setuptools):
+it easier to write, find and run tests.
+        
+            By default, nose will run tests in files or directories under the current
+            working directory whose names include "test" or "Test" at a word boundary
+            (like "test_this" or "functional_test" or "TestClass" but not
+            "libtest"). Test output is similar to that of unittest, but also includes
+            captured stdout output from failing tests, for easy print-style debugging.
+        
+            These features, and many more, are customizable through the use of
+            plugins. Plugins included with nose provide support for doctest, code
+            coverage and profiling, flexible attribute-based test selection,
+            output capture and more. More information about writing plugins may be
 
 %package bin
 Summary: bin components for the nose package.
@@ -44,9 +54,18 @@ Group: Documentation
 doc components for the nose package.
 
 
+%package legacypython
+Summary: legacypython components for the nose package.
+Group: Default
+
+%description legacypython
+legacypython components for the nose package.
+
+
 %package python
 Summary: python components for the nose package.
 Group: Default
+Requires: nose-legacypython
 
 %description python
 python components for the nose package.
@@ -57,8 +76,11 @@ python components for the nose package.
 %patch1 -p1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1484554894
+export SOURCE_DATE_EPOCH=1504922802
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -66,12 +88,15 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1484554894
+export SOURCE_DATE_EPOCH=1504922802
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
@@ -86,6 +111,10 @@ python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 %defattr(-,root,root,-)
 %doc /usr/share/man/man1/*
 
+%files legacypython
+%defattr(-,root,root,-)
+/usr/lib/python2*/*
+
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python3*/*

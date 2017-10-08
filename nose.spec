@@ -6,7 +6,7 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 30
+Release  : 31
 URL      : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source0  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source99 : http://pypi.debian.net/nose/nose-1.3.7.tar.gz.asc
@@ -55,6 +55,14 @@ Group: Documentation
 doc components for the nose package.
 
 
+%package extras
+Summary: extras components for the nose package.
+Group: Default
+
+%description extras
+extras components for the nose package.
+
+
 %package legacypython
 Summary: legacypython components for the nose package.
 Group: Default
@@ -92,7 +100,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507160580
+export SOURCE_DATE_EPOCH=1507493224
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -102,7 +110,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1507160580
+export SOURCE_DATE_EPOCH=1507493224
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -115,13 +123,17 @@ echo ----[ mark ]----
 
 %files bin
 %defattr(-,root,root,-)
+%exclude /usr/bin/nosetests-2.7
 /usr/bin/nosetests
-/usr/bin/nosetests-2.7
 /usr/bin/nosetests-3.6
 
 %files doc
 %defattr(-,root,root,-)
 %doc /usr/share/man/man1/*
+
+%files extras
+%defattr(-,root,root,-)
+/usr/bin/nosetests-2.7
 
 %files legacypython
 %defattr(-,root,root,-)

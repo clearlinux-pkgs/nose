@@ -19,7 +19,7 @@ Requires: nose-doc
 Requires: nose-python
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 Patch1: doc-install.patch

@@ -6,7 +6,7 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 42
+Release  : 43
 URL      : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source0  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source99 : http://pypi.debian.net/nose/nose-1.3.7.tar.gz.asc
@@ -15,13 +15,14 @@ Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: nose-bin
 Requires: nose-python3
-Requires: nose-doc
+Requires: nose-man
 Requires: nose-python
 BuildRequires : pbr
 BuildRequires : pip
-
+BuildRequires : python-core
 BuildRequires : python3-dev
 BuildRequires : setuptools
+BuildRequires : setuptools-legacypython
 Patch1: doc-install.patch
 
 %description
@@ -41,17 +42,10 @@ it easier to write, find and run tests.
 %package bin
 Summary: bin components for the nose package.
 Group: Binaries
+Requires: nose-man
 
 %description bin
 bin components for the nose package.
-
-
-%package doc
-Summary: doc components for the nose package.
-Group: Documentation
-
-%description doc
-doc components for the nose package.
 
 
 %package extras
@@ -69,6 +63,14 @@ Requires: python-core
 
 %description legacypython
 legacypython components for the nose package.
+
+
+%package man
+Summary: man components for the nose package.
+Group: Default
+
+%description man
+man components for the nose package.
 
 
 %package python
@@ -98,7 +100,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1519340542
+export SOURCE_DATE_EPOCH=1530328857
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -106,9 +108,9 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1519340542
+export SOURCE_DATE_EPOCH=1530328857
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -123,11 +125,7 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 %exclude /usr/bin/nosetests-2.7
 /usr/bin/nosetests
-/usr/bin/nosetests-3.6
-
-%files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man1/*
+/usr/bin/nosetests-3.7
 
 %files extras
 %defattr(-,root,root,-)
@@ -136,6 +134,10 @@ echo ----[ mark ]----
 %files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/nosetests.1
 
 %files python
 %defattr(-,root,root,-)

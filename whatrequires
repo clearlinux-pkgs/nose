@@ -14,6 +14,7 @@ ModemManager
 NetworkManager
 OpenSP
 Paste
+PasteDeploy
 Pillow
 PyMySQL
 PyWavelets
@@ -72,6 +73,7 @@ R-doRNG
 R-drc
 R-dtw
 R-dynlm
+R-effects
 R-emmeans
 R-fastcluster
 R-fitdistrplus
@@ -121,6 +123,7 @@ R-pkgmaker
 R-plm
 R-plotly
 R-prabclus
+R-psychotools
 R-quantreg
 R-questionr
 R-rasterVis
@@ -186,7 +189,6 @@ audit
 autofs
 awscli
 babl
-backports.functools_lru_cache
 backports.weakref
 bash_kernel
 bcrypt
@@ -476,6 +478,7 @@ pylint
 pynacl
 pyparsing
 pyquery
+pyrfc3339
 pytest
 pytest-cov
 pytest-runner

@@ -6,10 +6,10 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 54
+Release  : 55
 URL      : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source0  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
-Source99 : http://pypi.debian.net/nose/nose-1.3.7.tar.gz.asc
+Source1 : http://pypi.debian.net/nose/nose-1.3.7.tar.gz.asc
 Summary  : nose extends unittest to make testing easier
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -18,14 +18,21 @@ Requires: nose-man = %{version}-%{release}
 Requires: nose-python = %{version}-%{release}
 Requires: nose-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-BuildRequires : python-core
-BuildRequires : setuptools-legacypython
 Patch1: doc-install.patch
 
 %description
-Basic usage
-***********
-Use the nosetests script (after installation by setuptools):
+it easier to write, find and run tests.
+        
+            By default, nose will run tests in files or directories under the current
+            working directory whose names include "test" or "Test" at a word boundary
+            (like "test_this" or "functional_test" or "TestClass" but not
+            "libtest"). Test output is similar to that of unittest, but also includes
+            captured stdout output from failing tests, for easy print-style debugging.
+        
+            These features, and many more, are customizable through the use of
+            plugins. Plugins included with nose provide support for doctest, code
+            coverage and profiling, flexible attribute-based test selection,
+            output capture and more. More information about writing plugins may be
 
 %package bin
 Summary: bin components for the nose package.
@@ -69,8 +76,13 @@ python3 components for the nose package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554322674
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570821229
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 

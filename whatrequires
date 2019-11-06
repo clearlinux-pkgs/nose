@@ -14,7 +14,6 @@ WebTest
 amqp
 awscli
 botocore
-caffe
 case
 django-nose
 dogpile.core

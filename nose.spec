@@ -6,10 +6,10 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 58
+Release  : 59
 URL      : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source0  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
-Source1 : http://pypi.debian.net/nose/nose-1.3.7.tar.gz.asc
+Source1  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz.asc
 Summary  : nose extends unittest to make testing easier
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -78,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573071910
+export SOURCE_DATE_EPOCH=1576012043
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -91,7 +91,7 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}

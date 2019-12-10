@@ -38,6 +38,7 @@ pyrfc3339
 pytest
 python-tabulate
 qtwebengine
+sos
 statsd
 statsmodels
 sure

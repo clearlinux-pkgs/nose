@@ -6,7 +6,7 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 59
+Release  : 60
 URL      : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source0  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source1  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz.asc
@@ -78,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576012043
+export SOURCE_DATE_EPOCH=1576887320
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -99,6 +99,9 @@ python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+## install_append content
+ln -s nosetests %{buildroot}/usr/bin/nosetests-3
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -106,6 +109,7 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/nosetests
+/usr/bin/nosetests-3
 /usr/bin/nosetests-3.8
 
 %files man

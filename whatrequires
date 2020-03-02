@@ -23,13 +23,13 @@ hdmedians
 horizon
 intel-graphics-compiler
 ipdbplugin
+koji
 kombu
 libdnf
 matplotlib
 mistune
 nose-cov
 nosexcover
-numpy
 numpydoc
 ovirt-guest-agent
 pyparsing
@@ -38,6 +38,7 @@ pyrfc3339
 pytest
 python-tabulate
 qtwebengine
+seqdiag
 sos
 statsd
 statsmodels

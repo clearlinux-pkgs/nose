@@ -6,7 +6,7 @@
 #
 Name     : nose
 Version  : 1.3.7
-Release  : 63
+Release  : 64
 URL      : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source0  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz
 Source1  : http://pypi.debian.net/nose/nose-1.3.7.tar.gz.asc
@@ -21,25 +21,18 @@ BuildRequires : buildreq-distutils3
 Patch1: doc-install.patch
 
 %description
-nose extends the test loading and running features of unittest, making
-    it easier to write, find and run tests.
-
-    By default, nose will run tests in files or directories under the current
-    working directory whose names include "test" or "Test" at a word boundary
-    (like "test_this" or "functional_test" or "TestClass" but not
-    "libtest"). Test output is similar to that of unittest, but also includes
-    captured stdout output from failing tests, for easy print-style debugging.
-
-    These features, and many more, are customizable through the use of
-    plugins. Plugins included with nose provide support for doctest, code
-    coverage and profiling, flexible attribute-based test selection,
-    output capture and more. More information about writing plugins may be
-    found on in the nose API documentation, here:
-    http://readthedocs.org/docs/nose/
-
-    If you have recently reported a bug marked as fixed, or have a craving for
-    the very latest, you may want the development version instead:
-    https://github.com/nose-devs/nose/tarball/master#egg=nose-dev
+it easier to write, find and run tests.
+        
+            By default, nose will run tests in files or directories under the current
+            working directory whose names include "test" or "Test" at a word boundary
+            (like "test_this" or "functional_test" or "TestClass" but not
+            "libtest"). Test output is similar to that of unittest, but also includes
+            captured stdout output from failing tests, for easy print-style debugging.
+        
+            These features, and many more, are customizable through the use of
+            plugins. Plugins included with nose provide support for doctest, code
+            coverage and profiling, flexible attribute-based test selection,
+            output capture and more. More information about writing plugins may be
 
 %package bin
 Summary: bin components for the nose package.
@@ -86,12 +79,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583187008
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603396852
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build

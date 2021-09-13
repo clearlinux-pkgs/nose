@@ -1,1 +1,2 @@
 doc-install.patch
+0001-Disable-use_2to3-setuptools-option.patch

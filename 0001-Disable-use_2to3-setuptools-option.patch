@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Patrick McCarty <patrick.mccarty@intel.com>
+Date: Sun, 12 Sep 2021 19:30:25 -0700
+Subject: [PATCH] Disable use_2to3 setuptools option
+
+The option was made obsolete in setuptools >= 58.
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ setup.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index a2091c0..7e01bba 100644
+--- a/setup.py
++++ b/setup.py
+@@ -13,8 +13,7 @@ if sys.version_info >= (3,):
+         from distribute_setup import use_setuptools
+         use_setuptools()
+ 
+-    extra = {'use_2to3': True,
+-             'test_dirs': test_dirs,
++    extra = {'test_dirs': test_dirs,
+              'test_build_dir': 'build/tests',
+              'pyversion_patching': True,
+              }

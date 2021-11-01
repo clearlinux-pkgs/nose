@@ -8,9 +8,6 @@ Routes
 SQLAlchemy
 Sphinx
 Theano
-WebTest
-awscli
-botocore
 ciso8601
 django-nose
 fasteners
@@ -32,5 +29,4 @@ seqdiag
 sos
 statsmodels
 sure
-urllib3
 zope.interface
